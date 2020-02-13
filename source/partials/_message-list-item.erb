@@ -1,0 +1,11 @@
+<%
+	 if !defined?(item_classes)
+		 item_classes = ""
+	 end
+%>
+<% messageItems.each do |messageItem| %>
+	<div class="message-list-item <%= messageItem[:item_classes] %>">
+		<p><strong><%= messageItem[:title] %></strong></p>
+		<%= messageItem[:body] %>
+	</div>
+<% end %>

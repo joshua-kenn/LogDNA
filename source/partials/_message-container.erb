@@ -1,0 +1,17 @@
+<div class="message-container">
+	<div class="message-body">
+		<h2>Aenean cursus efficitur tellus sed luctus.</h2>
+		<h3>Proin sed justo a ligula lobortis suscipit ut vel urna.</h3>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero necessitatibus beatae exercitationem ab numquam deserunt quaerat, aliquid, odit suscipit laboriosam hic dignissimos facilis aspernatur iste aut eaque sunt? Beatae repellat velit ea minus quas ipsum corporis eaque explicabo asperiores, accusamus alias laboriosam ipsa voluptatum deleniti commodi architecto, laudantium facere. Nihil alias maiores aspernatur voluptatum quibusdam labore corporis qui aperiam, minus fugiat fuga, nesciunt facere molestias officiis sint unde voluptatem! Recusandae porro, tenetur sint totam non animi quod dignissimos, impedit mollitia tempore nisi quo, temporibus hic accusamus expedita. Mollitia saepe tenetur, voluptatum architecto id iste recusandae beatae, consequuntur autem alias obcaecati dignissimos perferendis labore eius iusto hic vitae aperiam voluptate praesentium neque inventore distinctio ut? At animi ducimus maiores excepturi quas soluta dolores blanditiis laudantium esse veniam nobis iste incidunt repellendus doloremque ex nulla tempore enim nam, aliquam magnam provident quia iusto. </p>
+		<figure class="figure">
+			<%= image_tag ("https://via.placeholder.com/620x250"), width: 620, height: 250 %>
+			<figcaption class="figure-caption">At animi ducimus maiores excepturi</figcaption>
+		</figure>
+	</div><!-- message body ends -->
+	<div class="message-form-container">
+		<form id="formSubmit" class="message-form" action="server-response.php" method="post">
+			<input type="text" name="message" placeholder="Message..." class="form-control" /><button type="submit" class="form-submit">Submit</button> 
+		</form><!-- form ends -->
+		<div id="messageResponse" class="message-response-container"></div>
+	</div><!-- form container ends -->
+</div><!-- message container ends -->

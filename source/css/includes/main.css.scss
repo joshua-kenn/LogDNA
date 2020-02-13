@@ -1,0 +1,302 @@
+@import "../import-me";
+*{
+	box-sizing: border-box;
+}
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+body{
+	line-height: 1;
+	font-family: $font-family-sans-serif;
+	color: $body-font-color;
+	background: $body-bg-color;
+}
+
+.header{
+	position: -webkit-sticky;
+	position: sticky;
+	z-index: 100;
+	background: $header-color;
+	display: flex;
+	.logo{
+		background: $brand-color;
+		width: $sidebar-width;
+		height: $header-height;
+		display: flex;
+		align-content: center;
+		justify-content: center;
+		flex-direction: column;
+		-webkit-box-shadow: inset -3px 0px 3px -1px rgba(0,0,0,0.37);
+		-moz-box-shadow: inset -3px 0px 3px -1px rgba(0,0,0,0.37);
+		box-shadow: inset -3px 0px 3px -1px rgba(0,0,0,0.37);
+		img{
+			filter: brightness(0) invert(1);
+			margin: 0 auto;
+			padding: 0;
+			display: inline-block;
+		}
+	}
+	&-title{
+		flex-grow: 1;
+		-webkit-box-shadow: 0px 3px 3px -1px rgba(0,0,0,0.37);
+		-moz-box-shadow: 0px 3px 3px -1px rgba(0,0,0,0.37);
+		box-shadow: 0px 3px 3px -1px rgba(0,0,0,0.37);
+		display: flex;
+		align-items: center;
+		padding-left: 22px;
+		h1{
+			font-weight: 300;
+			font-size: 28px
+		}
+	}
+}
+
+.app-wrapper{
+	height: calc(100vh - 75px);
+	display: flex;
+	align-items: stretch;
+}
+
+.sidebar{
+	width: $sidebar-width;
+	background: $sidebar-bg-color;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-top: 12px;
+	&-item{
+		text-align: center;
+		font-size: 12px;
+		color: $body-bg-color;
+		margin-bottom: 12px; 
+		position: relative;
+		cursor: pointer;
+		span{
+			display: block;
+			background: $body-bg-color;
+			width: $sidebar-item-width;
+			height: $sidebar-item-width;
+			margin-bottom: 6px;
+			border-radius: 4px;
+		}
+		&:before{
+			content: '';
+			width: 1px;
+			height: 1px;
+			border-radius: 50%;
+			background: $brand-color;
+			position: absolute;
+			top: 25px;
+			left: -15px;
+			opacity: 0;
+			-webkit-box-shadow: 0px 0px 5px 8px rgba(201,46,92,1);
+			-moz-box-shadow: 0px 0px 5px 8px rgba(201,46,92,1);
+			box-shadow: 0px 0px 5px 8px rgba(201,46,92,1);
+			transition: 0.3s ease-in-out opacity;
+		}
+		&.active, &:hover{
+			&:before{
+				opacity: 1;
+			}
+		}
+	}
+}
+.message-list{
+	width: 425px;
+	background: $message-item-bg-color;
+	overflow-y: scroll;
+	&-item{
+		padding: 14px;
+		border-right: solid 2px $message-item-border-color;
+		border-bottom: solid 2px $message-item-border-color;
+		position: relative;
+		p{
+			font-size: 14px;
+			line-height: 17px;
+			margin-bottom: 8px;
+			&:last-child{
+				margin-bottom: 0;
+				height: 70px;
+				text-overflow: ellipsis;
+				overflow: hidden;
+				position: relative;
+				&:after{
+					content: '...';
+					width: 15px;
+					height: 17px;
+					position: absolute;
+					bottom: 0;
+					right: 0;
+					background: $message-item-bg-color;
+				}
+			}
+		}
+		&:after{
+			content:'';
+			opacity: 0;
+			position: absolute;
+			top: calc(50% - 10px);
+			right: -2px;
+			width: 0;
+			height: 0;
+			border-style: solid;
+			border-width: 10px 15px 10px 0;
+			border-color: transparent $message-body-bg-color transparent transparent;
+			transition: 0.3s ease-in-out opacity;
+		}
+		&.active, &:hover{
+			cursor: pointer;
+			&:after{
+				opacity: 1;
+			}
+		}
+	}
+}
+.message-container{
+	width: calc(100vw - 500px);
+	background: $message-body-bg-color;
+	display: flex;
+	flex-direction: column;
+	.message-body{
+		padding: 34px 32px 0;
+		flex-grow: 1;
+		height: calc(100% - 100px);
+		overflow-y: scroll;
+		h2{
+			font-size: 22px;
+			line-height: 25px;
+			margin-bottom: 5px;
+		}
+		h3{
+			font-size: 16px;
+			line-height: 19px;
+			font-style: italic;
+			font-weight: 400;
+			margin-bottom: 18px;
+		}
+		p{
+			font-size: 14px;
+			line-height: 17px;
+			margin-bottom: 35px; 
+		}
+		.figure{
+			text-align: center;
+			margin-bottom: 35px; 
+			img{
+				max-width: 100%;
+				height: auto;
+			}
+			.figure-caption{
+				font-size: 12px;
+				font-style: italic;
+			}	
+		}
+	}
+	.message-form-container{
+		border-top: solid 2px $message-item-border-color;
+		align-self: flex-end;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-content: center;
+		height: 100px;
+		width: 100%;
+		padding: 0 32px;
+		.message-form{
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			width: 100%;
+			height: 50px;
+			border-radius: 4px;
+			&.error{
+				box-shadow: 0px 0px 10px 3px rgba(255, 0, 0, 1);
+				.form-control{
+					&::placeholder{
+						color: #ff0000;
+					}
+				}
+			}
+			&.success{
+				box-shadow: 0px 0px 10px 3px rgba(4, 232, 12, 1);
+			}
+			.success-message{
+				padding: 0 12px;
+			}
+			.form-control{
+				font-size: 16px;
+				padding: 0 12px;
+				line-height: 46px;
+				outline: none;
+				border: none;
+				flex-grow: 1;
+				color: #888a8e;
+				border-top-left-radius: 4px;
+				border-bottom-left-radius: 4px;
+				border-top: solid 2px $form-border-color;
+				border-left: solid 2px $form-border-color;
+				border-bottom: solid 2px $form-border-color;
+				&::placeholder{
+					color: #888a8e;
+				}
+			}
+			.form-submit{
+				border-radius: 4px;
+				border: solid 3px $form-border-color;
+				outline: none;
+				background: none;
+				font-size: 16px;
+				align-self: stretch;
+				color: #888a8e;
+				margin-left: -3px;
+				padding: 0 15px;
+				transition: all 0.3s ease;
+				cursor: pointer;
+				&:hover{
+					color: #fff;
+					background: $form-border-color;
+				}
+			}
+		}
+		.message-response-container{
+			margin: 0 32px;
+		}
+	}
+}
