@@ -16,5 +16,5 @@ middleman
 ### Final Static Assets Can be found in the following foloder:
 
 ```
-build folder
+/build
 ```
