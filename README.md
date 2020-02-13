@@ -18,7 +18,7 @@ middleman
 ### Folder container dynamic working files :
 
 ```
-/src
+/source
 ```
 
 ### Folder containing final static assets:
